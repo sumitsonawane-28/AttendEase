@@ -1,0 +1,3 @@
+# Placeholder for student profile images
+# In a real implementation, these would be actual student photos
+# For the demo, we're using placeholder paths that will fall back to default-avatar.png

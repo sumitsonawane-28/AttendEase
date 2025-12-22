@@ -1,0 +1,548 @@
+{
+  "users": [
+    {
+      "id": "fac001",
+      "role": "faculty",
+      "name": "Dr. Sarah Johnson",
+      "email": "sarah.johnson@university.edu",
+      "phone": "+1-555-0123",
+      "profilePic": "assets/faculty1.jpg",
+      "department": "Computer Science",
+      "assignedClasses": ["cs101", "cs201", "cs301"]
+    },
+    {
+      "id": "fac002",
+      "role": "faculty",
+      "name": "Prof. Michael Chen",
+      "email": "michael.chen@university.edu",
+      "phone": "+1-555-0124",
+      "profilePic": "assets/faculty2.jpg",
+      "department": "Mathematics",
+      "assignedClasses": ["math101", "math201"]
+    },
+    {
+      "id": "std001",
+      "role": "student",
+      "name": "Emma Rodriguez",
+      "email": "emma.rodriguez@student.edu",
+      "phone": "+1-555-0201",
+      "profilePic": "assets/student1.jpg",
+      "roll": "CS2021001",
+      "classId": "cs101",
+      "department": "Computer Science",
+      "year": 2,
+      "coins": 145,
+      "parentId": "par001"
+    },
+    {
+      "id": "std002",
+      "role": "student",
+      "name": "Alex Thompson",
+      "email": "alex.thompson@student.edu",
+      "phone": "+1-555-0202",
+      "profilePic": "assets/student2.jpg",
+      "roll": "CS2021002",
+      "classId": "cs101",
+      "department": "Computer Science",
+      "year": 2,
+      "coins": 89,
+      "parentId": "par002"
+    },
+    {
+      "id": "std003",
+      "role": "student",
+      "name": "Sophia Williams",
+      "email": "sophia.williams@student.edu",
+      "phone": "+1-555-0203",
+      "profilePic": "assets/student3.jpg",
+      "roll": "CS2021003",
+      "classId": "cs101",
+      "department": "Computer Science",
+      "year": 2,
+      "coins": 167,
+      "parentId": "par003"
+    },
+    {
+      "id": "std004",
+      "role": "student",
+      "name": "James Davis",
+      "email": "james.davis@student.edu",
+      "phone": "+1-555-0204",
+      "profilePic": "assets/student4.jpg",
+      "roll": "CS2021004",
+      "classId": "cs201",
+      "department": "Computer Science",
+      "year": 2,
+      "coins": 203,
+      "parentId": "par001"
+    },
+    {
+      "id": "std005",
+      "role": "student",
+      "name": "Isabella Garcia",
+      "email": "isabella.garcia@student.edu",
+      "phone": "+1-555-0205",
+      "profilePic": "assets/student5.jpg",
+      "roll": "CS2021005",
+      "classId": "cs201",
+      "department": "Computer Science",
+      "year": 2,
+      "coins": 124,
+      "parentId": "par002"
+    },
+    {
+      "id": "std006",
+      "role": "student",
+      "name": "Oliver Brown",
+      "email": "oliver.brown@student.edu",
+      "phone": "+1-555-0206",
+      "profilePic": "assets/student6.jpg",
+      "roll": "CS2021006",
+      "classId": "cs301",
+      "department": "Computer Science",
+      "year": 3,
+      "coins": 178,
+      "parentId": "par003"
+    },
+    {
+      "id": "std007",
+      "role": "student",
+      "name": "Ava Martinez",
+      "email": "ava.martinez@student.edu",
+      "phone": "+1-555-0207",
+      "profilePic": "assets/student7.jpg",
+      "roll": "MATH2021001",
+      "classId": "math101",
+      "department": "Mathematics",
+      "year": 1,
+      "coins": 95,
+      "parentId": "par001"
+    },
+    {
+      "id": "std008",
+      "role": "student",
+      "name": "Ethan Wilson",
+      "email": "ethan.wilson@student.edu",
+      "phone": "+1-555-0208",
+      "profilePic": "assets/student8.jpg",
+      "roll": "MATH2021002",
+      "classId": "math201",
+      "department": "Mathematics",
+      "year": 2,
+      "coins": 156,
+      "parentId": "par002"
+    },
+    {
+      "id": "par001",
+      "role": "parent",
+      "name": "Maria Rodriguez",
+      "email": "maria.rodriguez@parent.edu",
+      "phone": "+1-555-0301",
+      "profilePic": "assets/parent1.jpg",
+      "children": ["std001", "std004", "std007"]
+    },
+    {
+      "id": "par002",
+      "role": "parent",
+      "name": "Robert Thompson",
+      "email": "robert.thompson@parent.edu",
+      "phone": "+1-555-0302",
+      "profilePic": "assets/parent2.jpg",
+      "children": ["std002", "std005", "std008"]
+    },
+    {
+      "id": "par003",
+      "role": "parent",
+      "name": "Linda Williams",
+      "email": "linda.williams@parent.edu",
+      "phone": "+1-555-0303",
+      "profilePic": "assets/parent3.jpg",
+      "children": ["std003", "std006"]
+    }
+  ],
+  "classes": [
+    {
+      "id": "cs101",
+      "name": "Introduction to Programming",
+      "code": "CS 101",
+      "grade": "Freshman",
+      "facultyId": "fac001",
+      "department": "Computer Science",
+      "credits": 3,
+      "schedule": {
+        "Monday": "09:00-10:30",
+        "Wednesday": "09:00-10:30",
+        "Friday": "09:00-10:30"
+      },
+      "room": "Lab 101",
+      "totalStudents": 3
+    },
+    {
+      "id": "cs201",
+      "name": "Data Structures & Algorithms",
+      "code": "CS 201",
+      "grade": "Sophomore",
+      "facultyId": "fac001",
+      "department": "Computer Science",
+      "credits": 4,
+      "schedule": {
+        "Tuesday": "11:00-12:30",
+        "Thursday": "11:00-12:30"
+      },
+      "room": "Room 205",
+      "totalStudents": 2
+    },
+    {
+      "id": "cs301",
+      "name": "Advanced Software Engineering",
+      "code": "CS 301",
+      "grade": "Junior",
+      "facultyId": "fac001",
+      "department": "Computer Science",
+      "credits": 4,
+      "schedule": {
+        "Monday": "14:00-15:30",
+        "Wednesday": "14:00-15:30"
+      },
+      "room": "Lab 301",
+      "totalStudents": 1
+    },
+    {
+      "id": "math101",
+      "name": "Calculus I",
+      "code": "MATH 101",
+      "grade": "Freshman",
+      "facultyId": "fac002",
+      "department": "Mathematics",
+      "credits": 4,
+      "schedule": {
+        "Monday": "08:00-09:30",
+        "Wednesday": "08:00-09:30",
+        "Friday": "08:00-09:30"
+      },
+      "room": "Math Building 102",
+      "totalStudents": 1
+    },
+    {
+      "id": "math201",
+      "name": "Linear Algebra",
+      "code": "MATH 201",
+      "grade": "Sophomore",
+      "facultyId": "fac002",
+      "department": "Mathematics",
+      "credits": 3,
+      "schedule": {
+        "Tuesday": "10:00-11:30",
+        "Thursday": "10:00-11:30"
+      },
+      "room": "Math Building 201",
+      "totalStudents": 1
+    }
+  ],
+  "attendanceRecords": [
+    {
+      "id": "att001",
+      "classId": "cs101",
+      "date": "2024-01-15",
+      "presentStudentIds": ["std001", "std003"],
+      "absentStudentIds": ["std002"],
+      "lateStudentIds": [],
+      "savedBy": "fac001",
+      "timestamp": "2024-01-15T09:30:00Z",
+      "method": "manual"
+    },
+    {
+      "id": "att002",
+      "classId": "cs101",
+      "date": "2024-01-17",
+      "presentStudentIds": ["std001", "std002", "std003"],
+      "absentStudentIds": [],
+      "lateStudentIds": [],
+      "savedBy": "fac001",
+      "timestamp": "2024-01-17T09:35:00Z",
+      "method": "ai"
+    },
+    {
+      "id": "att003",
+      "classId": "cs201",
+      "date": "2024-01-16",
+      "presentStudentIds": ["std004"],
+      "absentStudentIds": ["std005"],
+      "lateStudentIds": [],
+      "savedBy": "fac001",
+      "timestamp": "2024-01-16T11:30:00Z",
+      "method": "manual"
+    },
+    {
+      "id": "att004",
+      "classId": "cs301",
+      "date": "2024-01-15",
+      "presentStudentIds": ["std006"],
+      "absentStudentIds": [],
+      "lateStudentIds": [],
+      "savedBy": "fac001",
+      "timestamp": "2024-01-15T14:30:00Z",
+      "method": "ai"
+    },
+    {
+      "id": "att005",
+      "classId": "math101",
+      "date": "2024-01-15",
+      "presentStudentIds": [],
+      "absentStudentIds": ["std007"],
+      "lateStudentIds": [],
+      "savedBy": "fac002",
+      "timestamp": "2024-01-15T08:30:00Z",
+      "method": "manual"
+    },
+    {
+      "id": "att006",
+      "classId": "math201",
+      "date": "2024-01-16",
+      "presentStudentIds": ["std008"],
+      "absentStudentIds": [],
+      "lateStudentIds": [],
+      "savedBy": "fac002",
+      "timestamp": "2024-01-16T10:30:00Z",
+      "method": "ai"
+    }
+  ],
+  "leaveApplications": [
+    {
+      "id": "leave001",
+      "studentId": "std002",
+      "studentName": "Alex Thompson",
+      "classId": "cs101",
+      "className": "Introduction to Programming",
+      "reason": "Medical Appointment",
+      "details": "Annual check-up with family doctor",
+      "startDate": "2024-01-20",
+      "endDate": "2024-01-20",
+      "status": "pending",
+      "submittedAt": "2024-01-18T10:30:00Z",
+      "facultyComment": ""
+    },
+    {
+      "id": "leave002",
+      "studentId": "std005",
+      "studentName": "Isabella Garcia",
+      "classId": "cs201",
+      "className": "Data Structures & Algorithms",
+      "reason": "Family Emergency",
+      "details": "Grandmother's surgery - need to travel home",
+      "startDate": "2024-01-22",
+      "endDate": "2024-01-24",
+      "status": "approved",
+      "submittedAt": "2024-01-19T14:15:00Z",
+      "approvedAt": "2024-01-19T15:30:00Z",
+      "facultyComment": "Approved. Please submit medical certificate on return."
+    },
+    {
+      "id": "leave003",
+      "studentId": "std007",
+      "studentName": "Ava Martinez",
+      "classId": "math101",
+      "className": "Calculus I",
+      "reason": "Academic Conference",
+      "details": "Attending National Mathematics Competition",
+      "startDate": "2024-01-25",
+      "endDate": "2024-01-26",
+      "status": "rejected",
+      "submittedAt": "2024-01-20T09:00:00Z",
+      "rejectedAt": "2024-01-20T16:00:00Z",
+      "facultyComment": "Conference dates clash with important exam. Please reschedule."
+    }
+  ],
+  "leaderboard": [
+    {
+      "rank": 1,
+      "studentId": "std004",
+      "name": "James Davis",
+      "department": "Computer Science",
+      "coins": 203,
+      "attendanceRate": 95.5,
+      "achievements": ["Perfect Week", "Early Bird", "Consistency Champion"]
+    },
+    {
+      "rank": 2,
+      "studentId": "std006",
+      "name": "Oliver Brown",
+      "department": "Computer Science",
+      "coins": 178,
+      "attendanceRate": 92.8,
+      "achievements": ["Perfect Week", "Team Player"]
+    },
+    {
+      "rank": 3,
+      "studentId": "std003",
+      "name": "Sophia Williams",
+      "department": "Computer Science",
+      "coins": 167,
+      "attendanceRate": 91.2,
+      "achievements": ["Early Bird", "Consistency Champion"]
+    },
+    {
+      "rank": 4,
+      "studentId": "std008",
+      "name": "Ethan Wilson",
+      "department": "Mathematics",
+      "coins": 156,
+      "attendanceRate": 89.5,
+      "achievements": ["Perfect Week"]
+    },
+    {
+      "rank": 5,
+      "studentId": "std001",
+      "name": "Emma Rodriguez",
+      "department": "Computer Science",
+      "coins": 145,
+      "attendanceRate": 87.3,
+      "achievements": ["Team Player"]
+    },
+    {
+      "rank": 6,
+      "studentId": "std005",
+      "name": "Isabella Garcia",
+      "department": "Computer Science",
+      "coins": 124,
+      "attendanceRate": 85.1,
+      "achievements": ["Early Bird"]
+    },
+    {
+      "rank": 7,
+      "studentId": "std007",
+      "name": "Ava Martinez",
+      "department": "Mathematics",
+      "coins": 95,
+      "attendanceRate": 78.2,
+      "achievements": []
+    },
+    {
+      "rank": 8,
+      "studentId": "std002",
+      "name": "Alex Thompson",
+      "department": "Computer Science",
+      "coins": 89,
+      "attendanceRate": 76.8,
+      "achievements": []
+    }
+  ],
+  "storeItems": [
+    {
+      "id": "badge001",
+      "name": "Golden Star Badge",
+      "description": "A prestigious golden star to show your excellence",
+      "price": 50,
+      "category": "badges",
+      "icon": "fas fa-star",
+      "color": "#FFD700"
+    },
+    {
+      "id": "badge002",
+      "name": "Perfect Attendance Badge",
+      "description": "Show everyone your commitment to attendance",
+      "price": 75,
+      "category": "badges",
+      "icon": "fas fa-calendar-check",
+      "color": "#28A745"
+    },
+    {
+      "id": "banner001",
+      "name": "Rainbow Profile Banner",
+      "description": "Colorful rainbow banner for your profile",
+      "price": 40,
+      "category": "banners",
+      "gradient": "linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffecd2)"
+    },
+    {
+      "id": "banner002",
+      "name": "Galaxy Profile Banner",
+      "description": "Stunning galaxy-themed banner",
+      "price": 60,
+      "category": "banners",
+      "gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+    },
+    {
+      "id": "avatar001",
+      "name": "Graduation Cap Frame",
+      "description": "Academic-themed avatar frame",
+      "price": 30,
+      "category": "avatar",
+      "frame": "graduation-cap"
+    },
+    {
+      "id": "avatar002",
+      "name": "Achievement Crown",
+      "description": "Crown frame for top performers",
+      "price": 80,
+      "category": "avatar",
+      "frame": "crown"
+    }
+  ],
+  "coinHistory": [
+    {
+      "studentId": "std001",
+      "transactions": [
+        {
+          "date": "2024-01-15",
+          "amount": 5,
+          "source": "attendance",
+          "classId": "cs101",
+          "description": "Attended Introduction to Programming"
+        },
+        {
+          "date": "2024-01-17",
+          "amount": 5,
+          "source": "attendance",
+          "classId": "cs101",
+          "description": "Attended Introduction to Programming"
+        },
+        {
+          "date": "2024-01-10",
+          "amount": -30,
+          "source": "purchase",
+          "itemId": "avatar001",
+          "description": "Purchased Graduation Cap Frame"
+        }
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif001",
+      "userId": "std002",
+      "type": "attendance",
+      "title": "Attendance Warning",
+      "message": "Your attendance has dropped below 75%. Please improve to avoid academic penalties.",
+      "timestamp": "2024-01-18T10:00:00Z",
+      "read": false,
+      "priority": "high"
+    },
+    {
+      "id": "notif002",
+      "userId": "par001",
+      "type": "leave",
+      "title": "Leave Application Update",
+      "message": "Emma's leave application has been approved.",
+      "timestamp": "2024-01-19T15:30:00Z",
+      "read": false,
+      "priority": "medium"
+    },
+    {
+      "id": "notif003",
+      "userId": "fac001",
+      "type": "system",
+      "title": "New Leave Application",
+      "message": "Alex Thompson submitted a new leave application for review.",
+      "timestamp": "2024-01-18T10:30:00Z",
+      "read": false,
+      "priority": "medium"
+    }
+  ],
+  "aiSettings": {
+    "faceRecognitionEnabled": true,
+    "confidenceThreshold": 0.85,
+    "autoSaveAttendance": false,
+    "simulationMode": true
+  }
+}
