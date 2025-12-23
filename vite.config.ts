@@ -22,6 +22,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     __HMR_HOSTNAME__: JSON.stringify('localhost'),
     __HMR_PORT__: JSON.stringify(24678),
     __HMR_TIMEOUT__: JSON.stringify(30000),
+    __HMR_CONFIG_NAME__: JSON.stringify('vite-hmr'),
     __HMR_ENABLE_OVERLAY__: JSON.stringify(true),
     __DEFINES__: JSON.stringify({
       'process.env.NODE_ENV': JSON.stringify(mode),
