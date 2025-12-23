@@ -14,12 +14,12 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 
   return {
     // Base public path when served in production
-    base: './',
+    base: '/',
     
     // Development server configuration
     server: {
       host: "::",
-      port: 8080,
+      port: 3000,
       strictPort: true,
       open: !isProduction,
     },
