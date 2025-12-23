@@ -1,6 +1,11 @@
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import { existsSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 console.log('Starting Vercel build process...');
 
@@ -14,8 +19,8 @@ try {
   execSync('npm run build', { stdio: 'inherit' });
   
   // Ensure the output directory exists
-  const outputDir = path.join(process.cwd(), 'dist');
-  if (!fs.existsSync(outputDir)) {
+  const outputDir = join(process.cwd(), 'dist');
+  if (!existsSync(outputDir)) {
     console.error('Build failed: dist directory not found after build');
     process.exit(1);
   }
