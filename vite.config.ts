@@ -15,6 +15,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // Define global constants to replace in the code
   const define = {
     __APP_ENV__: JSON.stringify(env.APP_ENV || 'development'),
+    __DEFINES__: JSON.stringify({
+      'process.env.NODE_ENV': JSON.stringify(mode),
+      'import.meta.env.MODE': JSON.stringify(mode),
+      'import.meta.env.DEV': JSON.stringify(mode === 'development'),
+      'import.meta.env.PROD': JSON.stringify(mode === 'production'),
+      'import.meta.env.SSR': JSON.stringify(false)
+    }),
     'process.env.NODE_ENV': JSON.stringify(mode),
     'process.env': {},
     'import.meta.env': {},
