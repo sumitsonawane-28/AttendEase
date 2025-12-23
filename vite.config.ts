@@ -17,11 +17,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     __APP_ENV__: JSON.stringify(env.APP_ENV || 'development'),
     'process.env.NODE_ENV': JSON.stringify(mode),
     'process.env': {},
+    'import.meta.env': {},
     'import.meta.env.MODE': JSON.stringify(mode),
     'import.meta.env.DEV': JSON.stringify(mode === 'development'),
     'import.meta.env.PROD': JSON.stringify(mode === 'production'),
     'import.meta.env.SSR': JSON.stringify(false),
-    global: 'globalThis'
+    'global': 'globalThis',
+    'globalThis.__vite_process_env_NODE_ENV': JSON.stringify(mode)
   };
 
   return {
