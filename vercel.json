@@ -5,7 +5,8 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist",
+        "includeBuildScripts": true
       }
     }
   ],
@@ -15,6 +16,10 @@
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
       }
+    },
+    {
+      "src": "^/.*",
+      "dest": "/index.html"
     },
     {
       "src": "^/(.*)",

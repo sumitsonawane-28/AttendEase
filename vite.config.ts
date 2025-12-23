@@ -1,9 +1,13 @@
-import { defineConfig, loadEnv } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import { defineConfig, loadEnv, type ConfigEnv, type UserConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
+import { fileURLToPath } from 'url';
 
-export default defineConfig(({ mode }) => {
+// Get the directory name in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // Load env file based on `mode` in the current directory and its parent directories
   const env = loadEnv(mode, process.cwd(), '');
   const isProduction = mode === 'production';
@@ -33,14 +37,24 @@ export default defineConfig(({ mode }) => {
           entryFileNames: 'assets/[name].[hash].js',
           chunkFileNames: 'assets/[name].[hash].js',
           assetFileNames: 'assets/[name].[hash][extname]',
-          manualChunks: {
-            react: ['react', 'react-dom', 'react-router-dom'],
-            vendor: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          manualChunks: (id: string) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
+                return 'vendor-react';
+              }
+              if (id.includes('@radix-ui')) {
+                return 'vendor-radix';
+              }
+              return 'vendor';
+            }
           },
         },
       },
-      // Ensure proper chunking for Vercel
       chunkSizeWarningLimit: 1000,
+      target: 'es2020',
+      modulePreload: {
+        polyfill: true,
+      },
     },
     
     // Plugins
@@ -49,9 +63,8 @@ export default defineConfig(({ mode }) => {
         // Enable Fast Refresh
         jsxImportSource: '@emotion/react',
         tsDecorators: true,
-      }),
-      !isProduction && componentTagger()
-    ].filter(Boolean),
+      })
+    ],
     
     // Module resolution
     resolve: {
@@ -72,7 +85,8 @@ export default defineConfig(({ mode }) => {
         'react-dom',
         'react-router-dom',
         '@radix-ui/react-dialog',
-        '@radix-ui/react-dropdown-menu'
+        '@radix-ui/react-dropdown-menu',
+        '@tanstack/react-query'
       ],
       esbuildOptions: {
         target: 'es2020',
@@ -80,7 +94,13 @@ export default defineConfig(({ mode }) => {
         define: {
           global: 'globalThis',
         },
+        // Enable esbuild tree shaking
+        treeShaking: true,
+        // Keep names for better debugging
+        keepNames: !isProduction,
       },
+      // Enable dependency optimization
+      force: isProduction,
     },
     
     // CSS configuration
