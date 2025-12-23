@@ -13,10 +13,16 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const isProduction = mode === 'production';
   
   // Define global constants to replace in the code
+  const isHMR = !isProduction && !process.env.VITE_TEST;
   const define = {
     __APP_ENV__: JSON.stringify(env.APP_ENV || 'development'),
     __BASE__: JSON.stringify('/'),
     __SERVER_HOST__: JSON.stringify(env.VITE_SERVER_HOST || 'http://localhost:3000'),
+    __HMR_PROTOCOL__: JSON.stringify('ws'),
+    __HMR_HOSTNAME__: JSON.stringify('localhost'),
+    __HMR_PORT__: JSON.stringify(24678),
+    __HMR_TIMEOUT__: JSON.stringify(30000),
+    __HMR_ENABLE_OVERLAY__: JSON.stringify(true),
     __DEFINES__: JSON.stringify({
       'process.env.NODE_ENV': JSON.stringify(mode),
       'import.meta.env.MODE': JSON.stringify(mode),
@@ -38,25 +44,30 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   return {
     define: {
       ...define,
-      // Add HMR configuration
-      __HMR_CONFIG_NAME__: JSON.stringify('vite-hmr'),
-      'import.meta.hot': 'import.meta.hot',
-      'process.env.HMR': 'true',
+      // HMR configuration
+      __HMR_PROTOCOL__: JSON.stringify('ws'),
+      __HMR_HOSTNAME__: JSON.stringify('localhost'),
+      __HMR_PORT__: JSON.stringify(24678),
+      __HMR_ENABLE_OVERLAY__: JSON.stringify(true),
+      __HMR_TIMEOUT__: JSON.stringify(30000),
+      'import.meta.hot': isHMR ? 'import.meta.hot' : 'undefined',
+      'process.env.HMR': JSON.stringify(isHMR)
     },
     // Base public path when served in production
     base: '/',
     
     // Development server configuration
     server: {
-      host: "::",
-      port: 3000,
+      host: isProduction ? '::' : 'localhost',
+      port: isProduction ? 3000 : 5173,
       strictPort: true,
       open: !isProduction,
       hmr: {
-        host: 'localhost',
         protocol: 'ws',
-        port: 3000
-      },
+        host: 'localhost',
+        port: isProduction ? 3000 : 24678,
+        clientPort: isProduction ? 3000 : 24678
+      }
     },
     
     // Build configuration
