@@ -17,6 +17,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const define = {
     __APP_ENV__: JSON.stringify(env.APP_ENV || 'development'),
     __BASE__: JSON.stringify('/'),
+    __HMR_BASE__: JSON.stringify('/'),
     __SERVER_HOST__: JSON.stringify(env.VITE_SERVER_HOST || 'http://localhost:3000'),
     __HMR_PROTOCOL__: JSON.stringify('ws'),
     __HMR_HOSTNAME__: JSON.stringify('localhost'),
