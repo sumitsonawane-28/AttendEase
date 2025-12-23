@@ -34,7 +34,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   };
 
   return {
-    define,
+    define: {
+      ...define,
+      // Add HMR configuration
+      __HMR_CONFIG_NAME__: JSON.stringify('vite-hmr'),
+      'import.meta.hot': 'import.meta.hot',
+      'process.env.HMR': 'true',
+    },
     // Base public path when served in production
     base: '/',
     
@@ -44,6 +50,11 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       port: 3000,
       strictPort: true,
       open: !isProduction,
+      hmr: {
+        host: 'localhost',
+        protocol: 'ws',
+        port: 3000
+      },
     },
     
     // Build configuration
