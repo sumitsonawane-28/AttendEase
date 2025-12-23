@@ -16,6 +16,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const define = {
     __APP_ENV__: JSON.stringify(env.APP_ENV || 'development'),
     __BASE__: JSON.stringify('/'),
+    __SERVER_HOST__: JSON.stringify(env.VITE_SERVER_HOST || 'http://localhost:3000'),
     __DEFINES__: JSON.stringify({
       'process.env.NODE_ENV': JSON.stringify(mode),
       'import.meta.env.MODE': JSON.stringify(mode),
