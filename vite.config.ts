@@ -11,8 +11,21 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // Load env file based on `mode` in the current directory and its parent directories
   const env = loadEnv(mode, process.cwd(), '');
   const isProduction = mode === 'production';
+  
+  // Define global constants to replace in the code
+  const define = {
+    __APP_ENV__: JSON.stringify(env.APP_ENV || 'development'),
+    'process.env.NODE_ENV': JSON.stringify(mode),
+    'process.env': {},
+    'import.meta.env.MODE': JSON.stringify(mode),
+    'import.meta.env.DEV': JSON.stringify(mode === 'development'),
+    'import.meta.env.PROD': JSON.stringify(mode === 'production'),
+    'import.meta.env.SSR': JSON.stringify(false),
+    global: 'globalThis'
+  };
 
   return {
+    define,
     // Base public path when served in production
     base: '/',
     
@@ -77,11 +90,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       },
     },
     
-    // Environment variables
-    define: {
-      'process.env': {}
-    },
-    
     // Optimize dependencies
     optimizeDeps: {
       include: [
@@ -94,10 +102,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       ],
       esbuildOptions: {
         target: 'es2020',
-        // Node.js global to browser globalThis
-        define: {
-          global: 'globalThis',
-        },
         // Enable esbuild tree shaking
         treeShaking: true,
         // Keep names for better debugging
